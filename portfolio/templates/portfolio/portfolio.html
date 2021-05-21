@@ -1,0 +1,48 @@
+{% extends 'portfolio/base.html' %}
+
+{% block navlinkHome %}active{% endblock navlinkHome %}
+
+{% block container %}
+
+<h1 class="display-3 text-center mt-3">David's Porfolio</h1>
+
+<div class="row justify-content-center">
+	<div class="col-8 col-lg-4">
+		{% load static %}
+		<figure class="figure">
+			<img src="{% static 'portfolio/ProfilePhoto.jpg' %}" alt="Profile Photo" class="img-fluid rounded">
+			<figcaption class="figure-caption text-center mt-1">
+				<h6>David Castellanos Castro</h6>
+			</figcaption>
+		</figure>
+	</div>
+</div>
+
+<hr>
+
+<div class="row row-cols-2 g-4">
+	{% for project in projects %}
+	<div class="col">
+		<div class="card h-100">
+			<div class="row g-0">
+				<div class="col-4">
+					<img src="{{ project.image.url }}" class="img-fluid">
+				</div>
+				<div class="col-8">
+					<div class="card-body">
+						<h5 class="card-title">{{ project.title }}</h5>
+						<p class="card-text">{{ project.description }}</p>
+
+						{% if project.url %}
+						<p class="card-text"><small class="text-muted"><a href="{{ project.url }}" target="_blank">Visit project1</a></small></p>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock container %}
