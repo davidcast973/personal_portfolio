@@ -3,7 +3,6 @@ En este repositorio se colocará un ejemplo de portafolio personal de proyectos 
 **************************************
 # Índice
 1. [Entregas](#entregas) <br>
-1.1 [Fecha de entregas](#fecha-de-entregas) <br>
 
 # Entregas
 
