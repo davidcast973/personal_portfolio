@@ -1,0 +1,28 @@
+{% extends 'portfolio\base.html' %}
+
+{% block navlinkBlogs %}active{% endblock navlinkBlogs %}
+
+{% block container %}
+<h1 class="display-2 mt-3 text-danger text-center">My {{ blogs.count }} blog{{ blogs.count|pluralize }} </h1>
+<div class="row justify-content-center my-4 row-cols-2">
+	{% for blog in blogs %}
+	<div class="col card-group mt-4">
+		<div class="card">
+			<div class="card-body">
+				<a href="{% url 'blog:blog_detail' blog.id %}">
+					<h5 class="card-title">{{ blog.title }}</h5>
+				</a>
+				<h6 class="card-subtitle text-muted">{{ blog.crateDate|date:'l d F Y'|upper }}</h6>
+				<!-- Para mostrar vista con etiquetas HTML -->
+				<!-- <p class="card-text">{{ blog.contentBlog|truncatechars:100 }}</p> -->
+				<!-- Para mostrar vista en HTML -->
+				<!-- <p class="card-text">{{ blog.contentBlog|safe|truncatechars:100 }}</p> -->
+				<!-- Mostrar sin etiquetas HTML -->
+				<p class="card-text">{{ blog.contentBlog|striptags }}</p>
+				<a href="#" class="card-link">{{ blog.autor }}</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock container %}
